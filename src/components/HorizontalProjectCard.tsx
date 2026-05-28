@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Github, ExternalLink } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
+import { Github } from 'lucide-react';
 import type { Project } from '../data/projects';
 
 interface HorizontalProjectCardProps {
@@ -10,6 +10,15 @@ interface HorizontalProjectCardProps {
 
 export default function HorizontalProjectCard({ project, index }: HorizontalProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+
+  // Scroll target for video parallax
+  const { scrollYProgress: cardScrollY } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Map scroll progress to subtle vertical translation of video
+  const videoY = useTransform(cardScrollY, [0, 1], ["-10%", "10%"]);
 
   // Motion values to map mouse coordinates
   const x = useMotionValue(0.5);
@@ -90,13 +99,14 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
           style={{ transform: 'translateZ(10px)' }}
           className="w-full md:w-[38%] relative aspect-video md:aspect-auto min-h-[220px] md:min-h-0 border-b md:border-b-0 md:border-r border-neutral-900 overflow-hidden"
         >
-          <video
+          <motion.video
             src={project.videoUrl}
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover absolute inset-0 pointer-events-none z-0"
+            style={{ y: videoY }}
+            className="w-full h-[120%] object-cover absolute top-[-10%] left-0 pointer-events-none z-0"
           />
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/30 to-transparent pointer-events-none z-10" />
         </div>
@@ -158,15 +168,6 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
-            </a>
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-primary text-black hover:bg-[#c9c6b4] hover:text-black transition-all duration-300 text-xs sm:text-sm font-medium hover:scale-105"
-            >
-              <ExternalLink className="w-4 h-4" />
-              <span>Website</span>
             </a>
           </motion.div>
         </div>

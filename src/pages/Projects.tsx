@@ -1,12 +1,20 @@
 import { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { projects } from '../data/projects';
 import HorizontalProjectCard from '../components/HorizontalProjectCard';
 
 export default function Projects() {
   const location = useLocation();
+
+  // Scroll Progress tracking for top progress indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Scroll to hash element if redirected from home page
   useEffect(() => {
@@ -30,6 +38,11 @@ export default function Projects() {
 
   return (
     <section className="min-h-screen bg-black relative py-32 px-4 md:px-6 flex flex-col items-center">
+      {/* Scroll Progress Indicator */}
+      <motion.div 
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-[3px] bg-primary origin-left z-50"
+      />
       {/* Background Noise Overlay */}
       <div className="bg-noise opacity-[0.15] pointer-events-none absolute inset-0 z-0" />
       
