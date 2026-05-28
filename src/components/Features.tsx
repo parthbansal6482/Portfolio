@@ -92,7 +92,7 @@ export default function Features() {
 
           {/* Cards 2, 3, 4: Featured Projects */}
           {topProjects.map(project => (
-            <ProjectCard key={project.id} project={project} variants={cardVariants} mode="minimal" />
+            <ProjectCard key={project.id} project={project} variants={cardVariants} />
           ))}
         </motion.div>
 

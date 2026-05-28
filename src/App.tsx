@@ -2,18 +2,18 @@ import { Routes, Route } from 'react-router-dom';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import ProjectDetails from './pages/ProjectDetails';
 import ScrollToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   return (
     <main className="bg-black text-[#E1E0CC] selection:bg-primary selection:text-black min-h-screen w-screen overflow-x-hidden">
+      <CustomCursor />
       <ScrollToTop />
       
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
-        <Route path="/projects/:id" element={<ProjectDetails />} />
       </Routes>
 
       {/* Inquiry / Footer Section */}
