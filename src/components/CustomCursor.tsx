@@ -80,7 +80,7 @@ export default function CustomCursor() {
         rotate: hovered ? 15 : -10,
       }}
       transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-      className="fixed pointer-events-none z-[9999] w-8 h-8 select-none"
+      className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 select-none"
     >
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
         {/* Left Sprout Leaf (animates out on hover) */}
@@ -92,7 +92,7 @@ export default function CustomCursor() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-          className="origin-[12px_6px]"
+          style={{ transformOrigin: '12px 6px' }}
         />
         
         {/* Right Sprout Leaf (animates out on hover) */}
@@ -104,7 +104,7 @@ export default function CustomCursor() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 0.05 }}
-          className="origin-[12px_6px]"
+          style={{ transformOrigin: '12px 6px' }}
         />
 
         {/* Flower Seed Body */}

@@ -70,10 +70,6 @@ export default function Projects() {
 
         {/* Page Header */}
         <div className="mb-20 text-center flex flex-col items-center justify-center">
-          {/* Eyebrow Label */}
-          <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-primary/60 uppercase mb-3 block">
-            Selected Archives
-          </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4 tracking-tight">
             <WordsPullUpMultiStyle segments={titleSegments} className="justify-center !flex" />
           </h1>

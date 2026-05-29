@@ -97,7 +97,7 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
         whileInView="visible"
         viewport={{ once: true, margin: "-120px" }}
         whileHover={{ scale: 1.012, y: -4 }}
-        className="flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-neutral-950 border border-neutral-900 hover:border-neutral-800/80 transition-all duration-500 w-full min-h-[320px] relative group"
+        className="flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-neutral-950 border border-neutral-900 hover:border-neutral-800/80 transition-colors duration-500 w-full min-h-[320px] relative group"
       >
         {/* Spotlight Glow Tracker across the whole card */}
         <motion.div
