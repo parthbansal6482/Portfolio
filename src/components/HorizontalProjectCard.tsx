@@ -81,7 +81,7 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
   };
 
   return (
-    <div className="perspective-1000 w-full mb-12">
+    <div className="perspective-1000 w-full mb-6">
       <motion.div
         ref={cardRef}
         id={project.id}

@@ -69,16 +69,16 @@ export default function Projects() {
         </Link>
 
         {/* Page Header */}
-        <div className="mb-20 text-left">
+        <div className="mb-20 text-center flex flex-col items-center justify-center">
           {/* Eyebrow Label */}
           <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-primary/60 uppercase mb-3 block">
             Selected Archives
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4 tracking-tight">
-            <WordsPullUpMultiStyle segments={titleSegments} className="justify-start !flex" />
+            <WordsPullUpMultiStyle segments={titleSegments} className="justify-center !flex" />
           </h1>
-          <div className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mt-4">
-            <WordsPullUpMultiStyle segments={descSegments} className="justify-start !flex" />
+          <div className="text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed mt-4 text-center mx-auto">
+            <WordsPullUpMultiStyle segments={descSegments} className="justify-center !flex" />
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export default function Projects() {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="h-[1px] bg-gradient-to-r from-transparent via-neutral-900 to-transparent my-12 origin-center"
+                  className="h-[1px] bg-gradient-to-r from-transparent via-neutral-900 to-transparent my-6 origin-center"
                 />
               )}
               <HorizontalProjectCard 
