@@ -31,7 +31,7 @@ function App() {
           <div className="flex gap-4 items-center justify-center mb-12">
             <a
               href="mailto:parth44bansal@gmail.com"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-805 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
               title="Email"
             >
               <Mail className="w-5 h-5" />
@@ -41,7 +41,7 @@ function App() {
               href="https://github.com/parthbansal6482"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-805 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
               title="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -51,7 +51,7 @@ function App() {
               href="https://www.linkedin.com/in/parth-bansal-5b2825305/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-805 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
               title="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -61,7 +61,7 @@ function App() {
               href="https://x.com/Parthbansal6482"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-805 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 hover:border-neutral-700 text-primary hover:text-white transition-all duration-300 hover:scale-110"
               title="X (Twitter)"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

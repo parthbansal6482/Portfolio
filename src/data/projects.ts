@@ -6,6 +6,7 @@ export interface Skill {
 export interface Project {
   id: string;
   title: string;
+  category: string;
   description: string;
   videoUrl: string;
   githubUrl: string;
@@ -16,6 +17,7 @@ export const projects: Project[] = [
   {
     id: 'autoflow',
     title: 'Autoflow',
+    category: 'Workflow Automation',
     description: 'A self-hosted visual workflow builder to connect APIs, databases, and LLMs on an interactive drag-and-drop node canvas.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/AutoFlow.git',
@@ -30,6 +32,7 @@ export const projects: Project[] = [
   {
     id: 'ecommerce-agent',
     title: 'Ecommerce Agent',
+    category: 'Multi-Agent AI',
     description: 'An AI analytics agent utilizing LangGraph multi-agent workflows and Gemini 2.0 Flash to inspect sales, customers, and Shopify metrics.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Business-Analytics-Agent.git',
@@ -44,6 +47,7 @@ export const projects: Project[] = [
   {
     id: 'duality',
     title: 'Duality',
+    category: 'Sandboxed Systems',
     description: 'A distributed student grading and contest platform running secure automated code execution inside isolated Docker sandboxes.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Duality-Evaluation-Platform.git',
@@ -59,6 +63,7 @@ export const projects: Project[] = [
   {
     id: 'formly',
     title: 'Formly',
+    category: 'Interface Design',
     description: 'A keyboard-first, block-based minimalist form designer inspired by Notion and Tally, optimized for clean styling and speed.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Form-Builder.git',
@@ -71,6 +76,7 @@ export const projects: Project[] = [
   {
     id: 'gitfolio',
     title: 'Gitfolio',
+    category: 'Generative Portfolio',
     description: 'An AI engine that transforms your GitHub commit quality metrics and history into a tailored developer portfolio website.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Github-Portfolio-Builder.git',
@@ -85,6 +91,7 @@ export const projects: Project[] = [
   {
     id: 'taskflow',
     title: 'Taskflow',
+    category: 'Real-Time Sync',
     description: 'A real-time Kanban project board leveraging Socket.IO event broadcasting and instant frontend optimistic updates.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Real-Time-Task-Collab.git',

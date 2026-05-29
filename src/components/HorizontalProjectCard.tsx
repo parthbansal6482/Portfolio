@@ -24,6 +24,10 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
 
+  // Map mouse coordinates to background radial spotlight position
+  const glowLeft = useTransform(x, [0, 1], ["-10%", "110%"]);
+  const glowTop = useTransform(y, [0, 1], ["-10%", "110%"]);
+
   // Springs for smooth tilt transitions back and forth
   const tiltSpringConfig = { damping: 20, stiffness: 150 };
   const rotateX = useSpring(useTransform(y, [0, 1], [6, -6]), tiltSpringConfig);
@@ -92,12 +96,24 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-120px" }}
-        className="flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-neutral-950 border border-neutral-900 hover:border-neutral-800/80 transition-colors duration-500 w-full min-h-[320px] relative group"
+        whileHover={{ scale: 1.012, y: -4 }}
+        className="flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-neutral-950 border border-neutral-900 hover:border-neutral-800/80 transition-all duration-500 w-full min-h-[320px] relative group"
       >
+        {/* Spotlight Glow Tracker across the whole card */}
+        <motion.div
+          style={{
+            left: glowLeft,
+            top: glowTop,
+            x: '-50%',
+            y: '-50%',
+          }}
+          className="absolute w-[600px] h-[600px] rounded-full bg-primary/[0.06] blur-[120px] pointer-events-none z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+        />
+
         {/* Left Column: Video Block */}
         <div 
           style={{ transform: 'translateZ(10px)' }}
-          className="w-full md:w-[38%] relative aspect-video md:aspect-auto min-h-[220px] md:min-h-0 border-b md:border-b-0 md:border-r border-neutral-900 overflow-hidden"
+          className="w-full md:w-[38%] relative aspect-video md:aspect-auto min-h-[220px] md:min-h-0 border-b md:border-b-0 md:border-r border-neutral-900 overflow-hidden z-20"
         >
           <motion.video
             src={project.videoUrl}
@@ -108,26 +124,42 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
             style={{ y: videoY }}
             className="w-full h-[120%] object-cover absolute top-[-10%] left-0 pointer-events-none z-0"
           />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/90 via-black/30 to-transparent pointer-events-none z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/95 via-black/35 to-transparent pointer-events-none z-10" />
         </div>
 
         {/* Right Column: Project Details (with layered 3D depth) */}
-        <div className="w-full md:w-[62%] p-6 sm:p-8 flex flex-col justify-between relative min-h-[260px] md:min-h-0 overflow-visible">
-          <div>
-            {/* Title */}
-            <motion.h2 
+        <div className="w-full md:w-[62%] p-6 sm:p-8 flex flex-col justify-between relative min-h-[260px] md:min-h-0 overflow-hidden z-20">
+          <div className="relative z-10">
+            {/* Index & Header Label */}
+            <motion.div
               variants={itemVariants}
-              style={{ transform: 'translateZ(30px)' }}
-              className="text-2xl sm:text-3xl font-normal text-[#E1E0CC] mb-3 group-hover:text-primary transition-colors duration-300 transform-gpu"
+              style={{ transform: 'translateZ(15px)' }}
+              className="flex items-center gap-3 mb-3 select-none transform-gpu"
             >
-              {project.title}
-            </motion.h2>
+              <span className="font-serif italic text-primary text-2xl sm:text-3xl">0{index + 1}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
+                {project.category}
+              </span>
+            </motion.div>
+
+            {/* Title */}
+            <div className="relative mb-4 w-fit">
+              <motion.h2 
+                variants={itemVariants}
+                style={{ transform: 'translateZ(30px)' }}
+                className="text-2xl sm:text-3xl lg:text-4xl font-normal text-[#E1E0CC] group-hover:text-primary transition-colors duration-300 transform-gpu font-sans tracking-tight"
+              >
+                {project.title}
+              </motion.h2>
+              <div className="h-[1px] w-0 group-hover:w-20 bg-primary/30 transition-all duration-550 ease-out mt-1.5" />
+            </div>
 
             {/* Description */}
             <motion.p 
               variants={itemVariants}
-              style={{ transform: 'translateZ(15px)' }}
-              className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6 max-w-xl transform-gpu"
+              style={{ transform: 'translateZ(20px)' }}
+              className="text-neutral-400 text-xs sm:text-sm md:text-base leading-relaxed mb-6 max-w-xl transform-gpu font-sans text-pretty"
             >
               {project.description}
             </motion.p>
@@ -141,12 +173,12 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
               {project.skills.map((skill, sIndex) => (
                 <div 
                   key={sIndex}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900 border border-neutral-800/80 text-[10px] sm:text-xs text-[#E1E0CC] select-none"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-neutral-900/40 border border-neutral-900 text-[9px] sm:text-[10px] text-neutral-300 select-none font-mono tracking-wider uppercase transition-all duration-300 group-hover:border-neutral-800 group-hover:bg-neutral-900/80 group-hover:text-primary"
                 >
                   <img 
                     src={skill.iconUrl} 
                     alt={skill.name}
-                    className="w-3.5 h-3.5 object-contain"
+                    className="w-3.5 h-3.5 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                   />
                   <span>{skill.name}</span>
                 </div>
@@ -164,7 +196,7 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-neutral-900 border border-neutral-805 text-[#E1E0CC] hover:bg-neutral-800 hover:border-neutral-700 hover:text-white transition-all duration-300 text-xs sm:text-sm font-medium hover:scale-105"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-900 border border-neutral-800 text-[#E1E0CC] hover:bg-primary hover:text-black hover:border-primary transition-all duration-300 text-xs sm:text-sm font-medium hover:scale-105 shadow-[0_4px_20px_rgba(0,0,0,0.6)]"
             >
               <Github className="w-4 h-4" />
               <span>GitHub</span>
