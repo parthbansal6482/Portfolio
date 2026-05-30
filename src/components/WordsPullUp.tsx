@@ -48,7 +48,12 @@ export default function WordsPullUp({ text, className = '', showAsterisk = false
         const isLastWord = wordIndex === words.length - 1;
         
         return (
-          <span key={wordIndex} className="inline-block overflow-hidden mr-[0.22em] last:mr-0 py-[0.1em] -my-[0.1em]">
+          <span 
+            key={wordIndex} 
+            className={`inline-block overflow-hidden mr-[0.22em] last:mr-0 pt-[0.1em] -mt-[0.1em] pb-[0.2em] -mb-[0.2em] ${
+              isLastWord && showAsterisk ? 'pr-[0.4em]' : 'pr-[0.05em]'
+            }`}
+          >
             <motion.span
               variants={wordVariants}
               className="inline-block relative"

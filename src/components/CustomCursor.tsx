@@ -10,7 +10,7 @@ export default function CustomCursor() {
   const mouseY = useMotionValue(-100);
 
   // Fast, highly responsive springs for trailing fluid motion
-  const springConfig = { damping: 30, stiffness: 350, mass: 0.35 };
+  const springConfig = { damping: 30, stiffness: 380, mass: 0.3 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
@@ -76,51 +76,75 @@ export default function CustomCursor() {
         translateY: '-50%',
       }}
       animate={{
-        scale: hovered ? 1.6 : 1.1,
-        rotate: hovered ? 15 : -10,
+        scale: hovered ? 1.45 : 1.05,
+        rotate: hovered ? 10 : -8,
       }}
-      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 15 }}
       className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 select-none"
     >
-      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-        {/* Left Sprout Leaf (animates out on hover) */}
+      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full drop-shadow-[0_3px_8px_rgba(0,0,0,0.5)]">
+        {/* Underlay Sprout Stem (emerges on hover) */}
+        <motion.path
+          d="M12 18V6"
+          stroke="#A3B899"
+          strokeWidth="1.25"
+          strokeLinecap="round"
+          initial={{ scaleY: 0 }}
+          animate={{ scaleY: hovered ? 1 : 0 }}
+          transition={{ type: 'spring', stiffness: 220, damping: 16 }}
+          style={{ transformOrigin: '12px 18px' }}
+        />
+
+        {/* Left Sprout Leaf (sprouts from stem tip on hover) */}
         <motion.path
           d="M12 6C10.5 4 8.5 3.5 7.5 4C7 5 7.5 7 9.5 7.5C10.5 7.7 11.5 7 12 6Z"
           fill="#A3B899"
           stroke="#161616"
           strokeWidth="0.75"
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+          animate={{ scale: hovered ? 1.05 : 0, opacity: hovered ? 1 : 0, rotate: hovered ? -8 : 0 }}
+          transition={{ type: 'spring', stiffness: 250, damping: 14, delay: 0.08 }}
           style={{ transformOrigin: '12px 6px' }}
         />
         
-        {/* Right Sprout Leaf (animates out on hover) */}
+        {/* Right Sprout Leaf (sprouts from stem tip on hover) */}
         <motion.path
           d="M12 6C13.5 4 15.5 3.5 16.5 4C17 5 16.5 7 14.5 7.5C13.5 7.7 12.5 7 12 6Z"
           fill="#A3B899"
           stroke="#161616"
           strokeWidth="0.75"
           initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 15, delay: 0.05 }}
+          animate={{ scale: hovered ? 1.05 : 0, opacity: hovered ? 1 : 0, rotate: hovered ? 8 : 0 }}
+          transition={{ type: 'spring', stiffness: 250, damping: 14, delay: 0.12 }}
           style={{ transformOrigin: '12px 6px' }}
         />
 
-        {/* Flower Seed Body */}
-        <path
-          d="M12 6C9.5 9.5 8 13.5 8 16.5C8 18.9 9.8 20.5 12 20.5C14.2 20.5 16 18.9 16 16.5C16 13.5 14.5 9.5 12 6Z"
+        {/* Symmetrical Left Seed Shell Half (splits left on hover) */}
+        <motion.path
+          d="M12 6C9.5 9.5 8 13.5 8 16.5C8 18.9 9.8 20.5 12 20.5Z"
           fill="#DEDBC8"
           stroke="#161616"
-          strokeWidth="1"
+          strokeWidth="0.85"
+          animate={{
+            rotate: hovered ? -14 : 0,
+            x: hovered ? -1.8 : 0,
+          }}
+          transition={{ type: 'spring', stiffness: 250, damping: 16 }}
+          style={{ transformOrigin: '12px 20.5px' }}
         />
 
-        {/* Inner seed shell texture */}
-        <path
-          d="M12 8C11 11.5 10 14.5 10 16.5C10 17.5 10.8 18 12 18"
-          stroke="#B5B2A0"
-          strokeWidth="0.75"
-          strokeLinecap="round"
+        {/* Symmetrical Right Seed Shell Half (splits right on hover) */}
+        <motion.path
+          d="M12 6C14.5 9.5 16 13.5 16 16.5C16 18.9 14.2 20.5 12 20.5Z"
+          fill="#DEDBC8"
+          stroke="#161616"
+          strokeWidth="0.85"
+          animate={{
+            rotate: hovered ? 14 : 0,
+            x: hovered ? 1.8 : 0,
+          }}
+          transition={{ type: 'spring', stiffness: 250, damping: 16 }}
+          style={{ transformOrigin: '12px 20.5px' }}
         />
       </svg>
     </motion.div>

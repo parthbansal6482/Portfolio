@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import Navbar from './Navbar';
 import WordsPullUp from './WordsPullUp';
 
@@ -26,53 +25,35 @@ export default function Hero() {
         <div className="noise-overlay opacity-[0.7] mix-blend-overlay pointer-events-none absolute inset-0" />
 
         {/* Gradient overlay */}
-        <div className="bg-gradient-to-b from-black/30 via-transparent to-black/60 absolute inset-0 pointer-events-none" />
+        <div className="bg-gradient-to-b from-black/30 via-transparent to-black absolute inset-0 pointer-events-none" />
 
         {/* Navbar */}
         <Navbar />
 
         {/* Hero Content (bottom-aligned) */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-10">
-          <div className="grid grid-cols-12 gap-y-6 lg:gap-y-0 lg:gap-6 items-end">
+          <div className="grid grid-cols-12 gap-y-8 lg:gap-y-0 lg:gap-10 items-end">
             
-            {/* Left 8 columns for giant title */}
-            <div className="col-span-12 lg:col-span-8 flex flex-col">
+            {/* Left 7 columns for Pragmatist */}
+            <div className="col-span-12 lg:col-span-7 flex flex-col">
               <WordsPullUp
-                text="Prisma"
-                showAsterisk={true}
-                className="text-[26vw] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw] font-medium leading-[0.85] tracking-[-0.07em]"
+                text="Pragmatist"
+                className="text-[16vw] sm:text-[15vw] md:text-[13.5vw] lg:text-[10.5vw] xl:text-[10vw] 2xl:text-[9.5vw] font-medium leading-[0.85] tracking-[-0.07em] w-full pb-4"
                 style={{ color: '#E1E0CC' }}
               />
             </div>
 
-            {/* Right 4 columns for description and CTA button */}
-            <div className="col-span-12 lg:col-span-4 flex flex-col items-start gap-6 sm:gap-8 lg:pl-4">
+            {/* Right 5 columns for description */}
+            <div className="col-span-12 lg:col-span-5 flex flex-col items-start gap-4 lg:pl-6">
               {/* Description */}
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ ...ctaTransition, delay: 0.5 }}
-                className="text-primary/70 text-xs sm:text-sm md:text-base leading-[1.2] font-normal tracking-wide text-left"
+                className="text-[#E1E0CC]/95 text-[11px] sm:text-xs md:text-xs lg:text-[13px] leading-relaxed font-normal tracking-wide text-left drop-shadow-md pb-4"
               >
-                Prisma is a worldwide network of visual artists, filmmakers and storytellers bound not by place, status or labels but by passion and hunger to unlock potential through our unique perspectives.
+                I’ve always seen software development as more than just making code work; it's about building smooth, scalable systems that last. I like spending my time diving into backend logic, untangling messy workflows, and squeezing out extra performance to create clean, frictionless tools that bring ideas to life without the headache.
               </motion.p>
-
-              {/* CTA Button */}
-              <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ ...ctaTransition, delay: 0.7 }}
-              >
-                <button
-                  type="button"
-                  className="bg-primary rounded-full pl-5 pr-2 py-2 flex items-center gap-2 group hover:gap-3 transition-all duration-300 text-black font-medium text-sm sm:text-base"
-                >
-                  <span>Join the lab</span>
-                  <div className="bg-black rounded-full w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <ArrowRight className="text-white w-4 h-4 sm:w-5 sm:h-5" />
-                  </div>
-                </button>
-              </motion.div>
             </div>
             
           </div>

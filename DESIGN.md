@@ -1,5 +1,5 @@
 ---
-name: Prisma Portfolio Design System
+name: Pragmatist Portfolio Design System
 description: An elegant dark-mode portfolio combining organic motion with technical precision.
 colors:
   primary: "#DEDBC8"
@@ -51,7 +51,7 @@ components:
     padding: "8px 16px"
 ---
 
-# Design System: Prisma Portfolio
+# Design System: Pragmatist Portfolio
 
 ## 1. Visual Theme & Atmosphere
 A highly restrained, gallery-airy interface designed for EMs and technical recruiters. Built upon a canvas of pure Obsidian Black depth, the design matches brutalist-grade technical engineering grids with organic interactive animations. Negative space is used confidently to allow content to breathe, utilizing singular warm cream accents and sage green details. The vibe feels clinical yet natural.

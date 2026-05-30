@@ -1,5 +1,6 @@
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Skills from '../components/Skills';
 import Features from '../components/Features';
 
 export default function Home() {
@@ -11,7 +12,10 @@ export default function Home() {
       {/* 2. About Section */}
       <About />
 
-      {/* 3. Features / Projects Section */}
+      {/* 3. Skills Section */}
+      <Skills />
+
+      {/* 4. Features / Projects Section */}
       <Features />
     </>
   );

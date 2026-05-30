@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import type { Project } from '../data/projects';
 
 interface ProjectCardProps {
   project: Project;
-  variants?: any;
+  variants?: Variants;
 }
 
 export default function ProjectCard({ project, variants }: ProjectCardProps) {

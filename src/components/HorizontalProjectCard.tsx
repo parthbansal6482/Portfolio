@@ -136,9 +136,7 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
               style={{ transform: 'translateZ(15px)' }}
               className="flex items-center gap-3 mb-3 select-none transform-gpu"
             >
-              <span className="font-serif italic text-primary text-2xl sm:text-3xl">0{index + 1}</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
-              <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-primary/60 uppercase">
                 {project.category}
               </span>
             </motion.div>
