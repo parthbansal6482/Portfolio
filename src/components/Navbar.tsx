@@ -1,5 +1,5 @@
 export default function Navbar() {
-  const navItems = ["Our story", "Skills", "Collective", "Inquiries"];
+  const navItems = ["About", "Skills", "Projects", "Contact"];
 
   return (
     <nav className="absolute top-0 left-1/2 -translate-x-1/2 z-50 bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 md:px-8 border-x border-b border-neutral-900">

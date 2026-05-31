@@ -34,17 +34,17 @@ export default function Hero() {
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-10">
           <div className="grid grid-cols-12 gap-y-8 lg:gap-y-0 lg:gap-10 items-end">
             
-            {/* Left 7 columns for Pragmatist */}
-            <div className="col-span-12 lg:col-span-7 flex flex-col">
+            {/* Left 8 columns for Pragmatist */}
+            <div className="col-span-12 lg:col-span-8 flex flex-col">
               <WordsPullUp
                 text="Pragmatist"
-                className="text-[16vw] sm:text-[15vw] md:text-[13.5vw] lg:text-[10.5vw] xl:text-[10vw] 2xl:text-[9.5vw] font-medium leading-[0.85] tracking-[-0.07em] w-full pb-4"
+                className="text-[17vw] sm:text-[16vw] md:text-[14.5vw] lg:text-[12vw] xl:text-[12.5vw] 2xl:text-[12.5vw] font-medium leading-[0.85] tracking-[-0.07em] w-full pb-4"
                 style={{ color: '#E1E0CC' }}
               />
             </div>
 
-            {/* Right 5 columns for description */}
-            <div className="col-span-12 lg:col-span-5 flex flex-col items-start gap-4 lg:pl-6">
+            {/* Right 4 columns for description */}
+            <div className="col-span-12 lg:col-span-4 flex flex-col items-start gap-4 lg:pl-6">
               {/* Description */}
               <motion.p
                 initial={{ y: 20, opacity: 0 }}

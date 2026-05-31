@@ -45,7 +45,7 @@ export default function Features() {
   const topProjects = projects.filter(p => ['autoflow', 'ecommerce-agent', 'duality'].includes(p.id));
 
   return (
-    <section id="collective" className="min-h-screen bg-black relative py-24 px-4 md:px-6 overflow-hidden flex flex-col items-center">
+    <section id="projects" className="min-h-screen bg-black relative py-24 px-4 md:px-6 overflow-hidden flex flex-col items-center">
       {/* Background Noise Overlay */}
       <div className="bg-noise opacity-[0.15] pointer-events-none absolute inset-0 z-0" />
 

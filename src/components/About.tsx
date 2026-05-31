@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import { useScroll } from 'framer-motion';
 import WordsPullUpMultiStyle from './WordsPullUpMultiStyle';
 import AnimatedLetter from './AnimatedLetter';
@@ -17,7 +17,7 @@ export default function About() {
   ];
 
   const paragraphText = "Currently pursuing a BTech in Computer Science at BMU, I specialize in full-stack engineering and agentic AI systems. From architecting Docker-sandboxed execution platforms to building LLM-powered commerce intelligence systems, I craft digital artifacts with technical precision and design-forward aesthetics.";
-  const characters = paragraphText.split("");
+  let charCounter = 0;
 
   return (
     <section id="our-story" className="bg-black py-20 px-4 md:px-6 flex justify-center items-center">
@@ -36,17 +36,34 @@ export default function About() {
         {/* Body Paragraph with scroll reveal */}
         <p
           ref={paragraphRef}
-          className="text-[#DEDBC8] text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-center mt-8 md:mt-12 flex flex-wrap justify-center gap-x-[0.05em]"
+          className="text-[#DEDBC8] text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-center mt-8 md:mt-12"
         >
-          {characters.map((char, index) => (
-            <AnimatedLetter
-              key={index}
-              char={char}
-              index={index}
-              totalChars={characters.length}
-              progress={scrollYProgress}
-            />
-          ))}
+          {paragraphText.split(" ").map((word, wordIdx, arr) => {
+            const chars = word.split("");
+            const wordSpan = (
+              <span key={wordIdx} className="inline-block whitespace-nowrap">
+                {chars.map((char) => {
+                  const globalIndex = charCounter++;
+                  return (
+                    <AnimatedLetter
+                      key={globalIndex}
+                      char={char}
+                      index={globalIndex}
+                      totalChars={paragraphText.length}
+                      progress={scrollYProgress}
+                    />
+                  );
+                })}
+              </span>
+            );
+            charCounter++; // Account for the space character
+            return (
+              <Fragment key={wordIdx}>
+                {wordSpan}
+                {wordIdx < arr.length - 1 && " "}
+              </Fragment>
+            );
+          })}
         </p>
 
       </div>

@@ -17,7 +17,7 @@ function App() {
       </Routes>
 
       {/* Inquiry / Footer Section */}
-      <footer id="inquiries" className="bg-[#101010] py-20 px-4 md:px-6 flex flex-col items-center border-t border-neutral-900">
+      <footer id="contact" className="bg-[#101010] py-20 px-4 md:px-6 flex flex-col items-center border-t border-neutral-900">
         <div className="max-w-4xl w-full text-center flex flex-col items-center">
           <span className="text-primary text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-4 block">
             Start a project
