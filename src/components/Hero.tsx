@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import Navbar from './Navbar';
 import WordsPullUp from './WordsPullUp';
 
 export default function Hero() {
@@ -26,9 +25,6 @@ export default function Hero() {
 
         {/* Gradient overlay */}
         <div className="bg-gradient-to-b from-black/30 via-transparent to-black absolute inset-0 pointer-events-none" />
-
-        {/* Navbar */}
-        <Navbar />
 
         {/* Hero Content (bottom-aligned) */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 z-10">

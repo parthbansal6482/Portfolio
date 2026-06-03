@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 export default function CustomCursor() {
   const [hovered, setHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   // Mouse coordinate motion values
   const mouseX = useMotionValue(-100);
@@ -14,16 +15,29 @@ export default function CustomCursor() {
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
+  // Check for mobile/touch interfaces once on mount
   useEffect(() => {
-    // Hide custom cursor on mobile/touch interfaces
-    if (window.matchMedia('(pointer: coarse)').matches) {
-      return;
-    }
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    setIsTouchDevice(isTouch);
+  }, []);
+
+  // 1. Manage Event Listeners (Once on mount)
+  useEffect(() => {
+    if (isTouchDevice) return;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      
+      setIsVisible((prev) => {
+        if (!prev) {
+          // Prevent sliding animation from previous position (e.g. -100, -100)
+          cursorX.set(e.clientX);
+          cursorY.set(e.clientY);
+          return true;
+        }
+        return true;
+      });
     };
 
     const handleMouseLeaveWindow = () => {
@@ -36,6 +50,8 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target) return;
+      
       const isClickable = 
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
@@ -53,19 +69,30 @@ export default function CustomCursor() {
     document.addEventListener('mouseenter', handleMouseEnterWindow);
     window.addEventListener('mouseover', handleMouseOver);
 
-    // Hide standard cursor globally via JS as backup
-    document.body.style.cursor = 'none';
-
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeaveWindow);
       document.removeEventListener('mouseenter', handleMouseEnterWindow);
       window.removeEventListener('mouseover', handleMouseOver);
+    };
+  }, [isTouchDevice, mouseX, mouseY, cursorX, cursorY]);
+
+  // 2. Manage Body Cursor Visibility
+  useEffect(() => {
+    if (isTouchDevice) return;
+
+    if (isVisible) {
+      document.body.style.cursor = 'none';
+    } else {
+      document.body.style.cursor = 'auto';
+    }
+
+    return () => {
       document.body.style.cursor = 'auto';
     };
-  }, [mouseX, mouseY, isVisible]);
+  }, [isVisible, isTouchDevice]);
 
-  if (!isVisible) return null;
+  if (isTouchDevice) return null;
 
   return (
     <motion.div
@@ -76,10 +103,15 @@ export default function CustomCursor() {
         translateY: '-50%',
       }}
       animate={{
-        scale: hovered ? 1.45 : 1.05,
+        scale: isVisible ? (hovered ? 1.45 : 1.05) : 0,
         rotate: hovered ? 10 : -8,
+        opacity: isVisible ? 1 : 0,
       }}
-      transition={{ type: 'spring', stiffness: 220, damping: 15 }}
+      transition={{ 
+        scale: { type: 'spring', stiffness: 220, damping: 15 },
+        rotate: { type: 'spring', stiffness: 220, damping: 15 },
+        opacity: { duration: 0.15 }
+      }}
       className="fixed top-0 left-0 pointer-events-none z-[9999] w-8 h-8 select-none"
     >
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full drop-shadow-[0_3px_8px_rgba(0,0,0,0.5)]">

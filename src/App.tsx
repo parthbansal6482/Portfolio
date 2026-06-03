@@ -4,10 +4,12 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <main className="bg-black text-[#E1E0CC] selection:bg-primary selection:text-black min-h-screen w-screen overflow-x-hidden">
+      <Navbar />
       <CustomCursor />
       <ScrollToTop />
       
