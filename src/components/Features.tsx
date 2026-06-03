@@ -71,6 +71,7 @@ export default function Features() {
           {/* Card 1: Static Video Card */}
           <motion.div
             variants={cardVariants}
+            data-cursor="play"
             className="relative rounded-2xl md:rounded-[2rem] overflow-hidden w-full h-full min-h-[300px] lg:min-h-0 flex flex-col justify-end p-6 sm:p-8 bg-neutral-950 border border-neutral-900"
           >
             <video

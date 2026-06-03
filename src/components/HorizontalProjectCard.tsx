@@ -87,6 +87,7 @@ export default function HorizontalProjectCard({ project, index }: HorizontalProj
         id={project.id}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        data-cursor="view"
         style={{
           rotateX,
           rotateY,

@@ -14,7 +14,12 @@ export default function ProjectCard({ project, variants }: ProjectCardProps) {
       className="relative rounded-2xl md:rounded-[2rem] overflow-hidden w-full h-full min-h-[340px] lg:min-h-[400px] flex flex-col justify-end p-6 sm:p-8 bg-neutral-950 border border-neutral-900 group hover:border-neutral-700/80 transition-colors duration-300"
     >
       {/* Clickable link overlaying everything, linking to the specific project on the list page */}
-      <Link to={`/projects#${project.id}`} className="absolute inset-0 z-30" aria-label={`View ${project.title}`} />
+      <Link 
+        to={`/projects#${project.id}`} 
+        className="absolute inset-0 z-30" 
+        data-cursor="view" 
+        aria-label={`View ${project.title}`} 
+      />
       
       {/* Background Video */}
       <video
