@@ -1,6 +1,6 @@
-# E-Commerce Intelligence Research Agent
+# IntelAgent
 
-An AI-powered business analytics platform that leverages **LangGraph**, **Gemini 2.0 Flash**, and a modern web stack to provide deep insights into e-commerce data, specifically optimized for Shopify integration.
+An AI-powered business analytics platform that leverages **LangGraph**, **Groq**, and a modern web stack to provide deep insights into e-commerce data, specifically optimized for Shopify integration.
 
 ---
 
@@ -11,7 +11,7 @@ This project is a sophisticated research agent designed to help e-commerce busin
 ### Key Features
 
 - **Multi-Mode AI Research Agent**: Built with LangGraph for complex, multi-step Reasoning and Acting (ReAct). Supports both "Quick" and "Deep" analysis modes.
-- **Gemini 2.0 Flash**: High-speed, high-intelligence LLM from Google used for intent classification, analysis, and report generation.
+- **Groq**: High-speed LLM provider used for intent classification, analysis, and report generation.
 - **Shopify Integration**: Seamless data ingestion for products, orders, and customers (Note: Currently hidden in UI to prioritize manual uploads).
 - **Vector Memory & RAG**: Uses Qdrant for storing and retrieving contextual information (catalog, reviews, competitors) to minimize hallucinations.
 - **Structured Data Management**: PostgreSQL manages structured business metrics and session history.
@@ -69,7 +69,7 @@ The core intelligence is orchestrated using LangGraph, which manages the statefu
 ### Backend
 - **Framework**: [FastAPI](https://fastapi.tiangolo.com/) (Asynchronous API layer)
 - **Agent Orchestration**: [LangGraph](https://langchain-ai.github.io/langgraph/) & [LangChain](https://python.langchain.com/)
-- **LLM**: [Google Gemini 2.0 Flash](https://aistudio.google.com/app/apikey)
+- **LLM**: [Groq](https://console.groq.com/)
 - **Database**: [PostgreSQL](https://www.postgresql.org/) (via SQLAlchemy & asyncpg)
 - **Vector Search**: [Qdrant](https://qdrant.tech/) (Vector memory and RAG)
 - **Caching/Task Storage**: [Redis](https://redis.io/)
@@ -147,8 +147,8 @@ The application uses a **single `.env` file** in the root directory.
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `GOOGLE_API_KEY` | Gemini API Key | Required |
-| `LLM_PROVIDER` | `gemini`, `groq`, or `openrouter` | `gemini` |
+| `GROQ_API_KEY` | Groq API Key | Required |
+| `LLM_PROVIDER` | `gemini`, `groq`, or `openrouter` | `groq` |
 | `POSTGRES_URL` | Postgres URL | `postgresql+asyncpg://user:password@postgres:5432/ecomm_agent` |
 | `QDRANT_URL` | Qdrant URL | `http://qdrant:6333` |
 | `REDIS_URL` | Redis URL | `redis://redis:6379` |

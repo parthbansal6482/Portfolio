@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
@@ -15,88 +14,69 @@ export default function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [activeSection, setActiveSection] = useState("/#our-story");
 
-  const location = useLocation();
-  const lastScrollY = useRef(0);
   const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // 1. Manage Active Section based on Scroll and Location
+  // 1. Manage Active Section based on Manual Scroll Position
   useEffect(() => {
-    if (location.pathname === '/projects') {
-      setActiveSection("/#projects");
-      return;
-    }
-
-    const sections = ["our-story", "skills", "projects", "contact"];
-    const observers = sections.map((id) => {
-      const el = document.getElementById(id);
-      if (!el) return null;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveSection(`/#${id}`);
-            }
-          });
-        },
-        { rootMargin: "-40% 0px -40% 0px" } // trigger active state when section takes up the center of the viewport
-      );
-
-      observer.observe(el);
-      return { observer, el };
-    });
-
-    return () => {
-      observers.forEach((obs) => {
-        if (obs) obs.observer.unobserve(obs.el);
-      });
-    };
-  }, [location.pathname]);
-
-  // 2. Manage Scroll-to-Hide behavior
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Keep navbar visible near the very top of the page
-      if (currentScrollY < 50) {
-        setIsVisible(true);
-        if (timeoutId.current) {
-          clearTimeout(timeoutId.current);
-          timeoutId.current = null;
+    const checkActiveSection = () => {
+      const sections = ["our-story", "skills", "projects", "contact"];
+      let current = "/#our-story";
+      
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          // If section overlaps the upper 30% of the viewport
+          if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.3) {
+            current = `/#${id}`;
+          }
         }
-        lastScrollY.current = currentScrollY;
-        return;
       }
 
+      // Check if user has scrolled to the absolute bottom
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+        current = "/#contact";
+      }
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', checkActiveSection, { passive: true });
+    // Run once on mount
+    checkActiveSection();
+
+    return () => window.removeEventListener('scroll', checkActiveSection);
+  }, []);
+
+  // 2. Manage Inactivity Hide (Show on any scroll, hide after 3s of no interaction)
+  useEffect(() => {
+    const resetTimer = () => {
+      setIsVisible(true);
       if (timeoutId.current) {
         clearTimeout(timeoutId.current);
-        timeoutId.current = null;
       }
-
-      if (currentScrollY > lastScrollY.current) {
-        // Scrolling down -> hide navbar immediately (unless hovered)
-        if (!isHovered) {
+      
+      // Only hide if we are scrolled down past 50px and not hovering
+      if (!isHovered && window.scrollY > 50) {
+        timeoutId.current = setTimeout(() => {
           setIsVisible(false);
-        }
-      } else {
-        // Scrolling up -> show navbar
-        setIsVisible(true);
-
-        // Hide after inactivity if mouse is not hovering
-        if (!isHovered) {
-          timeoutId.current = setTimeout(() => {
-            setIsVisible(false);
-          }, 3000); // hides after 3 seconds of scroll inactivity
-        }
+        }, 3000);
       }
-
-      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const handleMouseMove = (e: MouseEvent) => {
+      // Wake up navbar if mouse moves near the top of the screen
+      if (window.scrollY > 50 && e.clientY < 120) {
+        resetTimer();
+      }
+    };
+
+    window.addEventListener('scroll', resetTimer, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', resetTimer);
+      window.removeEventListener('mousemove', handleMouseMove);
       if (timeoutId.current) clearTimeout(timeoutId.current);
     };
   }, [isHovered]);
@@ -113,11 +93,10 @@ export default function Navbar() {
   const handleMouseLeave = () => {
     setIsHovered(false);
     setHoveredIndex(null);
-    // If scroll position is not at the top, start the timer to hide
-    if (window.scrollY >= 50) {
+    if (window.scrollY > 50) {
       timeoutId.current = setTimeout(() => {
         setIsVisible(false);
-      }, 1500); // hide quicker after mouse leaves
+      }, 3000);
     }
   };
 

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import Home from './pages/Home';
-import Projects from './pages/Projects';
 import ScrollToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -15,7 +14,6 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
       </Routes>
 
       {/* Inquiry / Footer Section */}

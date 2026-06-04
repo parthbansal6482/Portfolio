@@ -30,15 +30,15 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'ecommerce-agent',
-    title: 'Ecommerce Agent',
+    id: 'intelagent',
+    title: 'IntelAgent',
     category: 'Multi-Agent AI',
-    description: 'An AI analytics agent utilizing LangGraph multi-agent workflows and Gemini 2.0 Flash to inspect sales, customers, and Shopify metrics.',
+    description: 'An AI analytics agent utilizing LangGraph multi-agent workflows and Groq to inspect sales, customers, and Shopify metrics.',
     videoUrl: 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260406_133058_0504132a-0cf3-4450-a370-8ea3b05c95d4.mp4',
     githubUrl: 'https://github.com/parthbansal6482/Business-Analytics-Agent.git',
     skills: [
       { name: 'FastAPI', iconUrl: 'https://cdn.simpleicons.org/fastapi/DEDBC8' },
-      { name: 'Google Gemini', iconUrl: 'https://cdn.simpleicons.org/googlegemini/DEDBC8' },
+      { name: 'Groq', iconUrl: 'https://cdn.simpleicons.org/groq/DEDBC8' },
       { name: 'PostgreSQL', iconUrl: 'https://cdn.simpleicons.org/postgresql/DEDBC8' },
       { name: 'Qdrant', iconUrl: 'https://cdn.simpleicons.org/qdrant/DEDBC8' },
       { name: 'React', iconUrl: 'https://cdn.simpleicons.org/react/DEDBC8' }
