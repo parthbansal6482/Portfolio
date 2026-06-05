@@ -235,17 +235,14 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="bg-black py-24 px-4 md:px-6 relative flex flex-col items-center border-t border-neutral-900/40">
+    <section id="skills" className="bg-black pt-24 pb-12 px-4 md:px-6 relative flex flex-col items-center border-t border-neutral-900/40">
       {/* Background Noise Overlay */}
       <div className="bg-noise opacity-[0.15] pointer-events-none absolute inset-0 z-0" />
 
       <div className="relative z-10 w-full max-w-7xl flex flex-col items-center">
         {/* Section Header */}
         <div className="mb-20 text-center flex flex-col items-center justify-center max-w-3xl">
-          <span className="font-mono text-[9px] sm:text-[10px] tracking-[0.25em] text-primary/60 uppercase mb-3 block">
-            Technical Arsenal
-          </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 tracking-tight">
             <WordsPullUpMultiStyle segments={titleSegments} className="justify-center !flex" />
           </h2>
           <div className="text-neutral-400 text-sm sm:text-base md:text-lg leading-relaxed mt-2 text-center mx-auto">

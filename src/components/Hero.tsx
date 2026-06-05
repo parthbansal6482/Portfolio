@@ -46,7 +46,7 @@ export default function Hero() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ ...ctaTransition, delay: 0.5 }}
-                className="text-[#E1E0CC]/95 text-[11px] sm:text-xs md:text-xs lg:text-[13px] leading-relaxed font-normal tracking-wide text-left drop-shadow-md pb-4"
+                className="text-neutral-400 text-xs sm:text-sm lg:text-[0.95rem] leading-relaxed font-light tracking-normal text-left pb-4"
               >
                 I’ve always seen software development as more than just making code work; it's about building smooth, scalable systems that last. I like spending my time diving into backend logic, untangling messy workflows, and squeezing out extra performance to create clean, frictionless tools that bring ideas to life without the headache.
               </motion.p>

@@ -13,10 +13,15 @@ export default function Features() {
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   const line1Segments = [
-    { text: "Production-grade systems built for the modern web.", className: "text-[#E1E0CC] font-normal text-center" }
+    { text: "Production-grade systems", className: "font-serif italic text-primary" },
+    { text: " built for the ", className: "font-sans font-light text-[#E1E0CC] mx-1.5 sm:mx-2" },
+    { text: "modern\u00A0web.", className: "font-serif italic text-primary" }
   ];
   const line2Segments = [
-    { text: "Powered by engineering. Guided by design.", className: "text-gray-500 font-normal text-center" }
+    { text: "Powered by", className: "font-sans font-light text-neutral-400" },
+    { text: "engineering.", className: "font-serif italic text-primary/80 ml-1.5 sm:ml-2" },
+    { text: "Guided by", className: "font-sans font-light text-neutral-400 ml-1.5 sm:ml-2" },
+    { text: "design.", className: "font-serif italic text-primary/80 ml-1.5 sm:ml-2" }
   ];
 
   const containerVariants = {
@@ -45,17 +50,17 @@ export default function Features() {
   };
 
   return (
-    <section id="projects" className="min-h-screen bg-black relative py-24 px-4 md:px-6 overflow-hidden flex flex-col items-center">
+    <section id="projects" className="min-h-screen bg-black relative pt-12 pb-24 px-4 md:px-6 overflow-hidden flex flex-col items-center">
       {/* Background Noise Overlay */}
       <div className="bg-noise opacity-[0.15] pointer-events-none absolute inset-0 z-0" />
 
       <div className="relative z-10 w-full max-w-7xl flex flex-col items-center">
         {/* Header Text */}
-        <div className="flex flex-col gap-2 items-center justify-center mb-16 text-center max-w-3xl mx-auto">
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight">
+        <div className="flex flex-col gap-2 items-center justify-center mb-24 text-center max-w-none w-full mx-auto">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
             <WordsPullUpMultiStyle segments={line1Segments} />
           </div>
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
             <WordsPullUpMultiStyle segments={line2Segments} />
           </div>
         </div>

@@ -56,10 +56,10 @@ export default function WordsPullUpMultiStyle({ segments, className = '' }: Word
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className={`inline-flex flex-wrap justify-center ${className}`}
+      className={`inline-flex flex-wrap justify-center items-center ${className}`}
     >
       {wordsList.map((item, index) => (
-        <span key={index} className="inline-block overflow-hidden mr-[0.25em] last:mr-0 pt-[0.1em] -mt-[0.1em] pb-[0.2em] -mb-[0.2em]">
+        <span key={index} className="inline-block align-middle overflow-hidden mr-[0.25em] last:mr-0 py-[0.2em] -my-[0.2em]">
           <motion.span
             variants={wordVariants}
             className={`inline-block ${item.className}`}

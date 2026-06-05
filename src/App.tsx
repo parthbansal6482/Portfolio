@@ -19,9 +19,6 @@ function App() {
       {/* Inquiry / Footer Section */}
       <footer id="contact" className="bg-[#101010] py-20 px-4 md:px-6 flex flex-col items-center border-t border-neutral-900">
         <div className="max-w-4xl w-full text-center flex flex-col items-center">
-          <span className="text-primary text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-4 block">
-            Start a project
-          </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.1] tracking-tight mb-8">
             Let's create something<br />
             <span className="italic font-serif">extraordinary.</span>

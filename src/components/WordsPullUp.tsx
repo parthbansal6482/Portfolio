@@ -41,7 +41,7 @@ export default function WordsPullUp({ text, className = '', showAsterisk = false
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className={`inline-flex flex-wrap ${className}`}
+      className={`inline-flex flex-wrap items-center ${className}`}
       style={style}
     >
       {words.map((word, wordIndex) => {
@@ -50,7 +50,7 @@ export default function WordsPullUp({ text, className = '', showAsterisk = false
         return (
           <span 
             key={wordIndex} 
-            className={`inline-block overflow-hidden mr-[0.22em] last:mr-0 pt-[0.1em] -mt-[0.1em] pb-[0.2em] -mb-[0.2em] ${
+            className={`inline-block align-middle overflow-hidden mr-[0.22em] last:mr-0 py-[0.2em] -my-[0.2em] ${
               isLastWord && showAsterisk ? 'pr-[0.4em]' : 'pr-[0.05em]'
             }`}
           >
